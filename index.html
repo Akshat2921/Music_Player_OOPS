@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>OOP Music Player — Resume Project</title>
+<meta name="description" content="A polished, responsive music player built with Object-Oriented JavaScript, HTML and CSS — play/pause, next, previous, progress, shuffle, repeat, playlist and persistence." />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="player-wrap">
+
+  <!-- Now Playing Section -->
+  <section class="card now" aria-label="Now playing">
+    <div class="art" id="art">
+      <img id="artImg" alt="Album art" src="https://picsum.photos/600/600?random=1">
+    </div>
+
+    <div class="meta">
+      <div class="title" id="songTitle">Loading...</div>
+      <div class="artist" id="songArtist">—</div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="time" id="curTime">0:00</div>
+      <div class="progress" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+        <div class="bar" id="progressBar"></div>
+      </div>
+      <div class="time" id="durTime">0:00</div>
+    </div>
+
+    <div class="controls" role="group" aria-label="Playback controls">
+      <button class="btn" id="shuffleBtn" title="Shuffle (S)" aria-pressed="false">🔀</button>
+      <button class="btn" id="prevBtn" title="Previous (←)">⏮️</button>
+      <button class="play" id="playBtn" title="Play / Pause (Space)" aria-pressed="false">▶️</button>
+      <button class="btn" id="nextBtn" title="Next (→)">⏭️</button>
+      <button class="btn" id="repeatBtn" title="Repeat (R)" aria-pressed="false">🔁</button>
+    </div>
+
+    <div class="bottom-controls">
+      <div class="left-small">
+        <div class="volume" aria-label="Volume control">
+          <button class="btn" id="muteBtn" title="Mute (M)">🔊</button>
+          <input class="vol-range" id="volume" type="range" min="0" max="1" step="0.01" value="0.9" aria-label="Volume slider">
+        </div>
+        <div style="color:var(--muted);font-size:.92rem">Shuffle / Repeat / Keyboard shortcuts included</div>
+      </div>
+      <div style="color:var(--muted);font-size:.9rem">Built with <strong>OOP JS</strong> — persistent state</div>
+    </div>
+
+    <!-- Hidden audio element used by player -->
+    <audio id="audioEl" preload="metadata"></audio>
+  </section>
+
+  <!-- Playlist Section -->
+  <aside class="card playlist" aria-label="Playlist">
+    <div class="search-add">
+      <input class="search" id="search" placeholder="Search or paste audio URL" aria-label="Search playlist">
+      <button class="add-btn" id="addBtn">Add</button>
+      <button class="add-btn" id="uploadBtn">Upload</button>
+      <input id="fileInput" type="file" accept="audio/*" multiple style="display:none">
+    </div>
+    <div id="tracksList" aria-live="polite"></div>
+    <div style="margin-top:8px;color:var(--muted);font-size:.9rem">
+      Tip: Use Space to play/pause, ← previous, → next, S shuffle, R repeat, M mute
+    </div>
+  </aside>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsmediatags@3.9.5/dist/jsmediatags.min.js"></script>
+<script src="app.js" defer></script>
+</body>
+</html>
